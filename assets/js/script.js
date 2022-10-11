@@ -2,34 +2,23 @@ const projectName = 'javascript-calculator';
 localStorage.setItem('example_project', 'Javascript Calculator');
 
 const keys = {
-	48: 'zero',
-	96: 'zero',
-	49: 'one',
-	97: 'one',
-	50: 'two',
-	98: 'two',
-	51: 'three',
-	99: 'three',
-	52: 'four',
-	100: 'four',
-	53: 'five',
-	101: 'five',
-	54: 'six',
-	102: 'six',
-	55: 'seven',
-	103: 'seven',
-	56: 'eight',
-	104: 'eight',
-	57: 'nine',
-	105: 'nine',
-	190: 'decimal',
-	110: 'decimal',
-	107: 'add',
-	109: 'subtract',
-	106: 'multiply',
-	111: 'divide',
-	13: 'equals',
-	46: 'clear'
+	'0': 'zero',
+	'1': 'one',
+	'2': 'two',
+	'3': 'three',
+	'4': 'four',
+	'5': 'five',
+	'6': 'six',
+	'7': 'seven',
+	'8': 'eight',
+	'9': 'nine',
+	'.': 'decimal',
+	'+': 'add',
+	'-': 'subtract',
+	'*': 'multiply',
+	'/': 'divide',
+	'Enter': 'equals',
+	'Delete': 'clear'
 };
 
 var input = 0;
@@ -155,7 +144,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	document.querySelector('body').addEventListener('keydown', (event2) => {
 		// event2.preventDefault();
 
-		const key = keys[event2.which];
+		const key = keys[event2.key];
 
 		if (key !== undefined) {
 			document.querySelector('#'+key).dispatchEvent(new Event('click'));
