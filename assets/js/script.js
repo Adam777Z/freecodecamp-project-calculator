@@ -48,7 +48,7 @@ function handleNumber(number) {
 			input = (input === 0 ? number : parseFloat(input.toString() + number));
 		}
 
-		$('#display').html(input);
+		document.querySelector('#display').textContent = input;
 	}
 }
 
@@ -64,20 +64,20 @@ function handleOperator(operatorThis) {
 	operator = operatorThis;
 	input = 0;
 
-	$('#operation').html(operation.length > 14 ? '...' + operation.substring(operation.length - 14) : operation);
-	$('#display').html(input);
+	document.querySelector('#operation').textContent = (operation.length > 14 ? '...' + operation.substring(operation.length - 14) : operation);
+	document.querySelector('#display').textContent = input;
 }
 
-$(document).ready(function() {
-	$('#clear').click(function() {
+document.addEventListener('DOMContentLoaded', (event) => {
+	document.querySelector('#clear').addEventListener('click', (event2) => {
 		input = 0;
 		operation = '';
 		operator = '';
-		$('#operation').html('&nbsp;');
-		$('#display').html('0');
+		document.querySelector('#operation').innerHTML = '&nbsp;';
+		document.querySelector('#display').textContent = '0';
 	});
 
-	$('#equals').click(function() {
+	document.querySelector('#equals').addEventListener('click', (event2) => {
 		if (operator !== '=') {
 			operation += input;
 			operator = '=';
@@ -85,75 +85,80 @@ $(document).ready(function() {
 
 		input = eval(operation);
 
-		$('#operation').html(operation.length > 14 ? '...' + operation.substring(operation.length - 14) : operation);
-		$('#display').html(input.toString().length > 14 ? Number.parseFloat(input).toPrecision(10).replace(/0+$/, '') : input);
+		document.querySelector('#operation').textContent = (operation.length > 14 ? '...' + operation.substring(operation.length - 14) : operation);
+		document.querySelector('#display').textContent = (input.toString().length > 14 ? Number.parseFloat(input).toPrecision(10).replace(/0+$/, '') : input);
 	});
 
-	$('#decimal').click(function() {
+	document.querySelector('#decimal').addEventListener('click', (event2) => {
 		if (!decimalNumber(input)) {
 			input = input + '.';
-			$('#display').html(input);
+			document.querySelector('#display').textContent = input;
 		}
 	});
 
-	$('#add').click(function() {
+	document.querySelector('#add').addEventListener('click', (event2) => {
 		handleOperator('+');
 	});
 
-	$('#subtract').click(function() {
+	document.querySelector('#subtract').addEventListener('click', (event2) => {
 		handleOperator('-');
 	});
 
-	$('#multiply').click(function() {
+	document.querySelector('#multiply').addEventListener('click', (event2) => {
 		handleOperator('*');
 	});
 
-	$('#divide').click(function() {
+	document.querySelector('#divide').addEventListener('click', (event2) => {
 		handleOperator('/');
 	});
 
-	$('#zero').click(function() {
+	document.querySelector('#zero').addEventListener('click', (event2) => {
 		handleNumber(0);
 	});
 
-	$('#one').click(function() {
+	document.querySelector('#one').addEventListener('click', (event2) => {
 		handleNumber(1);
 	});
 
-	$('#two').click(function() {
+	document.querySelector('#two').addEventListener('click', (event2) => {
 		handleNumber(2);
 	});
 
-	$('#three').click(function() {
+	document.querySelector('#three').addEventListener('click', (event2) => {
 		handleNumber(3);
 	});
 
-	$('#four').click(function() {
+	document.querySelector('#four').addEventListener('click', (event2) => {
 		handleNumber(4);
 	});
 
-	$('#five').click(function() {
+	document.querySelector('#five').addEventListener('click', (event2) => {
 		handleNumber(5);
 	});
 
-	$('#six').click(function() {
+	document.querySelector('#six').addEventListener('click', (event2) => {
 		handleNumber(6);
 	});
 
-	$('#seven').click(function() {
+	document.querySelector('#seven').addEventListener('click', (event2) => {
 		handleNumber(7);
 	});
 
-	$('#eight').click(function() {
+	document.querySelector('#eight').addEventListener('click', (event2) => {
 		handleNumber(8);
 	});
 
-	$('#nine').click(function() {
+	document.querySelector('#nine').addEventListener('click', (event2) => {
 		handleNumber(9);
 	});
 
-	$('body').keydown(function(event) {
-		// event.preventDefault();
-		$('#'+keys[event.which]).trigger('click');
+	document.querySelector('body').addEventListener('keydown', (event2) => {
+		// event2.preventDefault();
+
+		const key = keys[event2.which];
+
+		if (key !== undefined) {
+			document.querySelector('#'+key).dispatchEvent(new Event('click'));
+		}
 	});
 });
