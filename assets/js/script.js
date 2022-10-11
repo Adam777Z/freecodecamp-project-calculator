@@ -147,7 +147,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 		const key = keys[event2.key];
 
 		if (key !== undefined) {
-			document.querySelector('#'+key).dispatchEvent(new Event('click'));
+			let button = document.querySelector('#'+key);
+
+			button.dispatchEvent(new Event('click'));
+			button.classList.add('active');
+		}
+	});
+
+	document.querySelector('body').addEventListener('keyup', (event2) => {
+		// event2.preventDefault();
+
+		const key = keys[event2.key];
+
+		if (key !== undefined) {
+			let button = document.querySelector('#'+key);
+
+			button.classList.remove('active');
 		}
 	});
 });
