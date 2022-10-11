@@ -1,15 +1,31 @@
-.jumbotron {
-	margin-top: 2rem;
+body > .container > .row > .col {
+	max-width: 280px;
 }
 
-button {
-	width: 23%;
+.bg-light-2 {
+	background-color: var(--bs-gray-200) !important;
 }
 
-button#zero {
-	width: 48.5%;
+.buttons {
+	display: flex;
 }
 
-button#clear {
-	width: 74%;
+.buttons:not(:last-child) {
+	margin-bottom: 2%;
+}
+
+.buttons button {
+	width: 25%;
+}
+
+.buttons button#zero {
+	width: 54%;
+}
+
+.buttons button#clear {
+	width: 83%;
+}
+
+.buttons button:not(:last-child) {
+	margin-right: 2%;
 }
