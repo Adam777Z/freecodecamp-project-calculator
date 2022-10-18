@@ -29,3 +29,7 @@ body > .container > .row > .col {
 .buttons button:not(:last-child) {
 	margin-right: 2%;
 }
+
+.footer {
+	font-size: 0.8rem;
+}
